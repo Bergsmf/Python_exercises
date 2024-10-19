@@ -16,4 +16,5 @@ Thank you
 
 ## Challenges
 
-**right_number**: This games isn't in the Geeks for geeks challenges(but is based in one that I will implement in the future), this was a game that I played many years ago in the cell phone. Based on [Python – Cows and Bulls game](https://www.geeksforgeeks.org/python-cows-and-bulls-game/)
+* **right_number**: This game isn't in the Geeks for geeks challenges(but is based in one that I will implement in the future), this was a game that I played many years ago in the cell phone. Based on [Python – Cows and Bulls game](https://www.geeksforgeeks.org/python-cows-and-bulls-game/)
+* **number_guessing**: Simple game of guessing numbers: [Number guessing game](https://www.geeksforgeeks.org/number-guessing-game-in-python/)
