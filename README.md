@@ -6,7 +6,7 @@ The exercises are available at this link: [Python Projects](https://www.geeksfor
 
 The sites provide the implementation on the exercise page, but I face this projects as a challenge, then I just read the text that explain what is needed to do.
 
-I hope that in the future here will be many solutions with each more complex challenges
+I hope that in the future here will be many solutions with each more complex challenges.
 
 Thank you
 
