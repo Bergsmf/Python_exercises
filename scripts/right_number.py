@@ -2,55 +2,63 @@ from string import digits
 from random import choice
 
 
-def gera_numero() -> str:
+def generate_number() -> str:
     numbers = str(digits)
     number = ''
     for _ in range(0, 5):
-        sorteado = choice(numbers)
-        number = number + sorteado
-        numbers = numbers.replace(sorteado, '')
+        drawn = choice(numbers)
+        number = number + drawn
+        numbers = numbers.replace(drawn, '')
     return number
 
 
-def solicita_palpite() -> str:
-    palpite = input('Digite seu palpite:\n')
-    return palpite
-
-
-def verifica_palpite(number: str, palpite: str) -> str:
-    compara = ''
-    for i in range(0, 5):
-        if(number[i] == palpite[i]):
-            compara = compara + '.'
-        elif(palpite[i] in number):
-            compara = compara + '-'
+def request_guess() -> str:
+    is_valid = False
+    while not is_valid:
+        guess = input('Enter your guess (must be 5 distinct digits):\n')
+        if (guess.isdigit() and
+            len(set(guess)) == 5 and
+            len(guess) == 5):
+            is_valid = True
         else:
-            compara = compara + '_'
-    print(compara)
-    return compara
+            print('Invalid input! Please enter exactly 5 distinct digits (e.g., 12345).')
+    return guess
+
+
+def check_guess(number: str, guess: str) -> str:
+    comparison = ''
+    for i in range(0, 5):
+        if(number[i] == guess[i]):
+            comparison = comparison + '.'
+        elif(guess[i] in number):
+            comparison = comparison + '-'
+        else:
+            comparison = comparison + '_'
+    print(comparison)
+    return comparison
 
 
 def main():
-    explicacao = '''Adivinhe o número regras:
-    1. Um número de 5 dígitos, sem repetição, é sorteado.
-       Seu objetivo é decifrá-lo;
-    2. Digite seu palpite e uma resposta será exibida.
-       De acordo com a posição de cada dígito do seu palpite,
-       o retorno será:
-       . > Para dígito na posição correta;
-       - > Para dígito correto, na posição errada;
-       _ > Para dígito incorreto
-    3. Repita o processo até decifrar o número;
-    Boa sorte!'''
-    print(explicacao)
-    number = gera_numero()
-    resultado = ' ' * 5
-    tentativa = 0
-    while resultado != '.' * 5:
-        palpite = solicita_palpite()
-        resultado = verifica_palpite(number, palpite)
-        tentativa+=1
-    print(f'Parabéns, vocês acertou na tentativa {tentativa}')
+    explanation = '''Guess the number rules:
+    1. A 5-digit number, without repetition, is drawn.
+       Your goal is to figure it out;
+    2. Enter your guess and a response will be shown.
+       According to the position of each digit in your guess,
+       the feedback will be:
+       . > For a digit in the correct position;
+       - > For a correct digit, but in the wrong position;
+       _ > For an incorrect digit
+    3. Repeat the process until you guess the number;
+    Good luck!'''
+    print(explanation)
+    number = generate_number()
+    result = ' ' * 5
+    attempt = 0
+    while result != '.' * 5:
+        guess = request_guess()
+        result = check_guess(number, guess)
+        attempt += 1
+    print(f'Congratulations, you guessed it on attempt {attempt}')
 
 
 if __name__ == '__main__':
